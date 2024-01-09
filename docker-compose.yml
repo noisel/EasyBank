@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  accounts:
+    image: "accounts"
+    ports:
+      - "8080:8080"
+  loans:
+    image: "loans"
+    ports:
+      - "8090:8090"
+  cards:
+    image: "cards"
+    ports:
+      - "9000:9000"
