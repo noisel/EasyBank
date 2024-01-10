@@ -1,5 +1,11 @@
-FROM openjdk:17-alpine
-MAINTAINER ecole-pmn.fr
-WORKDIR /app
-COPY target/accounts-0.0.1-SNAPSHOT.jar /app/accounts-0.0.1-SNAPSHOT.jar
-CMD ["java", "-jar", "accounts-0.0.1-SNAPSHOT.jar"]
+#Start with a base image containing Java runtime
+FROM openjdk:17-jdk-slim as build
+
+#Information around who maintains the image
+MAINTAINER pmn.com
+
+# Add the application's jar to the container
+COPY target/accounts-0.0.1-SNAPSHOT.jar accounts-0.0.1-SNAPSHOT.jar
+
+#execute the application
+ENTRYPOINT ["java","-jar","/accounts-0.0.1-SNAPSHOT.jar"]
